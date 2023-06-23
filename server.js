@@ -1,5 +1,6 @@
 // DEPENDENCIES
 const express = require('express')
+// const {Sequelize} = require('sequelize')
 const app = express()
 
 // CONFIGURATION / MIDDLEWARE
@@ -18,3 +19,12 @@ app.get('/', (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`🎸 Rockin' on port: ${process.env.PORT}`)
 })
+
+// const sequelize = new Sequelize(process.env.PG_URI)
+
+// try {
+//   sequelize.authenticate();
+//   console.log(`Connected to database at ${process.env.PG_URI}`);
+// } catch(e) {
+//   console.log('unable to connect to database', e);
+// }
