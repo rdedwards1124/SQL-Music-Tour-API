@@ -9,8 +9,17 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({Band, Event}) {
       // define association here
+      MeetGreet.belongsTo(Band, {
+        foreignKey: 'band_id',
+        as: 'band'
+      })
+
+      MeetGreet.belongsTo(Event, {
+        foreignKey: "event_id",
+        as: "event"
+      })
     }
   }
   MeetGreet.init({
@@ -28,14 +37,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    meet_start_time: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    meet_end_time: {
-      type: DataTypes.DATE,
-      allowNull: false
-    }
+    // meet_start_time: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false
+    // },
+    // meet_end_time: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false
+    // }
   }, {
     sequelize,
     modelName: 'MeetGreet',
